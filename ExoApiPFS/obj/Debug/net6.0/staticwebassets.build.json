@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "s63bKtgnoRAPLsqRw7q+IZmfow1DF0s9PL13W+1aiKI=",
+  "Source": "ExoApiPFS",
+  "BasePath": "_content/ExoApiPFS",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
