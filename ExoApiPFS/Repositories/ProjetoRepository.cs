@@ -52,10 +52,12 @@ namespace ExoApiPFS.Repositories
 
             if (projetoBuscado != null)
             {
+              
                 projetoBuscado.Titulo = projeto.Titulo;
                 projetoBuscado.Situacao = projeto.Situacao;
-                projeto.DataInicio = projeto.DataInicio;
+                projetoBuscado.DataInicio = projeto.DataInicio;
                 projetoBuscado.Descricao = projeto.Descricao;
+
             }
 
             _context.Projetos.Update(projetoBuscado);

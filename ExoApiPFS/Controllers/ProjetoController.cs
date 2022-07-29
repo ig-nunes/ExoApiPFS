@@ -1,5 +1,6 @@
 ﻿using ExoApiPFS.Models;
 using ExoApiPFS.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +9,8 @@ namespace ExoApiPFS.Controllers
     [Produces("application/json")]
     [Route("api/[controller]")]
     [ApiController]
+
+    [Authorize]
     public class ProjetoController : ControllerBase
     {
         private readonly ProjetoRepository _projetoRepository;
@@ -53,6 +56,7 @@ namespace ExoApiPFS.Controllers
         }
 
 
+        [Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult CadastrarProjeto(Projeto projeto)
         {
@@ -71,6 +75,7 @@ namespace ExoApiPFS.Controllers
         }
 
 
+        [Authorize(Roles = "1")]
         [HttpDelete("{id}")]
         public IActionResult DeletarProjeto(int id)
         {
@@ -95,7 +100,7 @@ namespace ExoApiPFS.Controllers
             }
         }
 
-
+        [Authorize(Roles = "1")]
         [HttpPut("{id}")]
         public IActionResult AlterarProjeto(int id, Projeto projeto)
         {

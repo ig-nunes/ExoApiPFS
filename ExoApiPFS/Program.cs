@@ -1,6 +1,7 @@
 using ExoApiPFS.Contexts;
 using ExoApiPFS.Interfaces;
 using ExoApiPFS.Repositories;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,24 @@ builder.Services.AddCors(options =>
         .AllowAnyHeader()
         .AllowAnyMethod();
     });
+});
+
+builder.Services.AddAuthentication( options =>
+{
+    options.DefaultChallengeScheme = "JwtBearer";
+    options.DefaultAuthenticateScheme = "JwtBearer";
+}).AddJwtBearer("JwtBearer", options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateAudience = true,
+        ValidateIssuer = true,
+        ValidateLifetime = true,
+        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("exoapi-chave-autenticacao")),
+        ClockSkew = TimeSpan.FromMinutes(60),
+        ValidIssuer = "exoapi.webapi",
+        ValidAudience = "exoapi.webapi"
+    };
 });
 
 builder.Services.AddScoped<ExoApiContext, ExoApiContext>();
@@ -40,6 +59,8 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseCors("CorsPolicyProjeto");
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
