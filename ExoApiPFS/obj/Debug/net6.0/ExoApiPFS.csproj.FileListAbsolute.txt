@@ -58,3 +58,5 @@ C:\Users\inune\Desktop\Programador Full-Stack - Senai\Unidade Curricular 14\Ativ
 C:\Users\inune\Desktop\Programador Full-Stack - Senai\Unidade Curricular 14\AtividadeOnline2\ExoApi\ExoApiPFS\ExoApiPFS\obj\Debug\net6.0\ExoApiPFS.genruntimeconfig.cache
 C:\Users\inune\Desktop\Programador Full-Stack - Senai\Unidade Curricular 14\AtividadeOnline2\ExoApi\ExoApiPFS\ExoApiPFS\obj\Debug\net6.0\ref\ExoApiPFS.dll
 C:\Users\inune\Desktop\Programador Full-Stack - Senai\Unidade Curricular 14\AtividadeOnline2\ExoApi\ExoApiPFS\ExoApiPFS\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\inune\Desktop\Programador Full-Stack - Senai\Unidade Curricular 14\AtividadeOnline2\ExoApi\ExoApiPFS\ExoApiPFS\bin\Debug\net6.0\ExoApiPFS.xml
+C:\Users\inune\Desktop\Programador Full-Stack - Senai\Unidade Curricular 14\AtividadeOnline2\ExoApi\ExoApiPFS\ExoApiPFS\obj\Debug\net6.0\ExoApiPFS.xml

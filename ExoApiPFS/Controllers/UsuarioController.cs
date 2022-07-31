@@ -16,6 +16,13 @@ namespace ExoApiPFS.Controllers
             _iUsuarioRepository = iUsuarioRepository;
         }
 
+
+        /// <summary>
+        /// Buscar usuários
+        /// </summary>
+        /// <returns></returns>
+        /// <response code="200">código retornado junto da lista de usuários buscado, caso a pesquisa tenha sido completada com sucesso</response>
+        /// <exception cref="Exception"></exception>
         [HttpGet]
         public IActionResult ListarUsuarios()
         {
@@ -29,7 +36,14 @@ namespace ExoApiPFS.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Buscar usuário por ID
+        /// </summary>
+        /// <param name="id">ID do projeto-alvo</param>
+        /// <returns></returns>
+        /// <response code="200">código retornado junto dos dados do usuário buscado, caso a pesquisa tenha sido completada com sucesso</response>
+        /// <response code="404">Código apresentado caso o usuário não seja encontrado</response>
+        /// <exception cref="Exception"></exception>
         [HttpGet("{id}")]
         public IActionResult BuscarPorId(int id)
         {
@@ -50,8 +64,26 @@ namespace ExoApiPFS.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Cadastrar Novo usuário
+        /// </summary>
+        /// <param name="usuario">Dados do novo usuário</param>
+        /// <returns></returns>
+        /// <remarks>
+        /// Exemplo de Body:
+        /// 
+        ///     {
+        ///         "email": "exemplo@email.com",
+        ///         "senha": "senhaexemplo",
+        ///         "tipo": "1"
+        ///     }
+        /// 
+        /// Obs:. usuários do tipo 1 são comuns e usuários do tipo 2 são administradores
+        /// </remarks>
+        /// <response code="201">Código retornado caso o usuário tenha sido cadastrado com sucesso</response>
+        /// <exception cref="Exception"></exception>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
         public IActionResult CadastrarUsuario(Usuario usuario)
         {
             try
@@ -67,7 +99,14 @@ namespace ExoApiPFS.Controllers
             }
         }
 
-
+        /// <summary>
+        /// Deletar usuário cadastrado
+        /// </summary>
+        /// <param name="id">ID do usuário a ser deletado</param>
+        /// <returns></returns>
+        /// <response code="200">Código retornado caso o usuário tenha sido deletado com sucesso. Retorna também uma frase de confirmação</response>
+        /// <response code="404">Código retornado caso o usuário a ser deletado não tenha sido encontrado</response>
+        /// <exception cref="Exception"></exception>
         [HttpDelete("{id}")]
         public IActionResult DeletarUsuario(int id)
         {
@@ -90,6 +129,26 @@ namespace ExoApiPFS.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Atualizar usuário cadastrado
+        /// </summary>
+        /// <param name="id">ID do usuário</param>
+        /// <param name="usuario">Novos dados do usuário a ser atualizado</param>
+        /// <returns></returns>
+        /// <remarks>
+        /// Exemplo de Body:
+        /// 
+        ///     {
+        ///         "email": "exemploatualizado@email.com",
+        ///         "senha": "senhaexemploatualizada",
+        ///         "tipo": "1"
+        ///     }
+        /// 
+        /// Obs:. usuários do tipo 1 são comuns e usuários do tipo 2 são administradores
+        /// </remarks>
+        /// <response code="200">Código retornado caso o usuário tenha sido atualizado com sucesso</response>
+        /// <response code="404">Código retornado caso o usuário tenha sido deletado com sucesso</response>
         [HttpPut("{id}")]
         public IActionResult AtualizarUsuario(int id, Usuario usuario)
         {

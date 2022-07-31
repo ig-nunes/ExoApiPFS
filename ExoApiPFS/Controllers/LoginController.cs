@@ -23,7 +23,16 @@ namespace ExoApiPFS.Controllers
         }
 
 
+
+        /// <summary>
+        /// Fazer Login com algum usuário
+        /// </summary>
+        /// <param name="dados"></param>
+        /// <returns>O token para o usuário para que o mesmo possa realizar métodos sobre a tabela de Projetos.</returns>
+        /// <response code="200">Retorna o token para o usuário</response>
+        /// <exception cref="Exception"></exception>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public IActionResult Login(LoginViewModel dados)
         {
             try

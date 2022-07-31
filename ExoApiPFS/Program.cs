@@ -2,6 +2,8 @@ using ExoApiPFS.Contexts;
 using ExoApiPFS.Interfaces;
 using ExoApiPFS.Repositories;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -45,7 +47,29 @@ builder.Services.AddTransient<IUsuarioRepository, UsuarioRepository>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen( options =>
+{
+    options.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Version = "v1",
+        Title = "ExoApi",
+        Description = "Uma Web API para usuários cadastrados para visualizar, adicionar, editar e deletar projetos",
+        TermsOfService = new Uri("https://example.com/terms"),
+        Contact = new OpenApiContact
+        {
+            Name = "Igor Nunes",
+            Url = new Uri("https://github.com/ig-nunes")
+        },
+        License = new OpenApiLicense
+        {
+            Name = "License",
+            Url = new Uri("https://example.com/license")
+        }
+    });
+    var xmlExoApi = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlExoApi));
+});
+
 
 var app = builder.Build();
 

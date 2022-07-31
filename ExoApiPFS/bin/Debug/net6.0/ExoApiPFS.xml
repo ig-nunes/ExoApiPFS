@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ExoApiPFS</name>
+    </assembly>
+    <members>
+        <member name="M:ExoApiPFS.Controllers.LoginController.Login(ExoApiPFS.ViewModels.LoginViewModel)">
+            <summary>
+            Fazer Login com algum usuário
+            </summary>
+            <param name="dados"></param>
+            <returns>O token para o usuário para que o mesmo possa realizar métodos sobre a tabela de Projetos.</returns>
+            <response code="200">Retorna o token para o usuário</response>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:ExoApiPFS.Controllers.ProjetoController.ListarProjetos">
+            <summary>
+            Listar todos os projetos
+            </summary>
+            <returns>Todos os projetos cadastrados</returns>
+            <response code="200">código retornado junto da lista de projetos buscado, caso a pesquisa tenha sido completada com sucesso</response>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:ExoApiPFS.Controllers.ProjetoController.BuscarPorId(System.Int32)">
+            <summary>
+            Buscar projeto por ID
+            </summary>
+            <param name="id">ID do projeto-alvo</param>
+            <returns></returns>
+            <response code="200">código retornado junto dos dados do projeto buscado, caso a pesquisa tenha sido completada com sucesso</response>
+            <response code="404">Código apresentado caso o projeto não seja encontrado</response>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:ExoApiPFS.Controllers.ProjetoController.CadastrarProjeto(ExoApiPFS.Models.Projeto)">
+             <summary>
+             Cadastrar novo projeto
+             </summary>
+             <param name="projeto">Dados do novo projeto</param>
+             <returns></returns>
+             <remarks>
+             Exemplo de Body:
+             
+                 {
+                     "titulo": "Título exemplo",
+                     "situacao": "Status exemplo",
+                     "dataInicio": "01/02/2022",
+                     "descricao": "Descrção exemplo"
+                 }
+            
+             </remarks>
+             <response code="201">Código retornado caso o projeto tenha sido cadastrado com sucesso</response>
+             <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:ExoApiPFS.Controllers.ProjetoController.DeletarProjeto(System.Int32)">
+            <summary>
+            Deletar projeto cadastrado
+            </summary>
+            <param name="id">ID do projeto a ser deletado</param>
+            <returns></returns>
+            <response code="200">Código retornado caso o projeto tenha sido deletado com sucesso. Retorna também uma frase de confirmação</response>
+            <response code="404">Código retornado caso o projeto a ser deletado não tenha sido encontrado</response>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:ExoApiPFS.Controllers.ProjetoController.AlterarProjeto(System.Int32,ExoApiPFS.Models.Projeto)">
+             <summary>
+             Atualizar projeto cadastrado
+             </summary>
+             <param name="id">ID do projeto</param>
+             <param name="projeto">Novos dados do projeto a ser atualizado</param>
+             <returns></returns>
+             <remarks>
+             Exemplo de Body:
+             
+                 {
+                     "titulo": "Novo Título exemplo",
+                     "situacao": "Novo Status exemplo",
+                     "dataInicio": "01/02/2022",
+                     "descricao": "Nova Descrção exemplo"
+                 }
+            
+             </remarks>
+             <response code="204">Código retornado caso o projeto tenha sido atualizado com sucesso</response>
+             <response code="404">Código retornado caso o projeto tenha sido deletado com sucesso</response>
+             <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:ExoApiPFS.Controllers.UsuarioController.ListarUsuarios">
+            <summary>
+            Buscar usuários
+            </summary>
+            <returns></returns>
+            <response code="200">código retornado junto da lista de usuários buscado, caso a pesquisa tenha sido completada com sucesso</response>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:ExoApiPFS.Controllers.UsuarioController.BuscarPorId(System.Int32)">
+            <summary>
+            Buscar usuário por ID
+            </summary>
+            <param name="id">ID do projeto-alvo</param>
+            <returns></returns>
+            <response code="200">código retornado junto dos dados do usuário buscado, caso a pesquisa tenha sido completada com sucesso</response>
+            <response code="404">Código apresentado caso o usuário não seja encontrado</response>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:ExoApiPFS.Controllers.UsuarioController.CadastrarUsuario(ExoApiPFS.Models.Usuario)">
+            <summary>
+            Cadastrar Novo usuário
+            </summary>
+            <param name="usuario">Dados do novo usuário</param>
+            <returns></returns>
+            <remarks>
+            Exemplo de Body:
+            
+                {
+                    "email": "exemplo@email.com",
+                    "senha": "senhaexemplo",
+                    "tipo": "1"
+                }
+            
+            Obs:. usuários do tipo 1 são comuns e usuários do tipo 2 são administradores
+            </remarks>
+            <response code="201">Código retornado caso o usuário tenha sido cadastrado com sucesso</response>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:ExoApiPFS.Controllers.UsuarioController.DeletarUsuario(System.Int32)">
+            <summary>
+            Deletar usuário cadastrado
+            </summary>
+            <param name="id">ID do usuário a ser deletado</param>
+            <returns></returns>
+            <response code="200">Código retornado caso o usuário tenha sido deletado com sucesso. Retorna também uma frase de confirmação</response>
+            <response code="404">Código retornado caso o usuário a ser deletado não tenha sido encontrado</response>
+            <exception cref="T:System.Exception"></exception>
+        </member>
+        <member name="M:ExoApiPFS.Controllers.UsuarioController.AtualizarUsuario(System.Int32,ExoApiPFS.Models.Usuario)">
+            <summary>
+            Atualizar usuário cadastrado
+            </summary>
+            <param name="id">ID do usuário</param>
+            <param name="usuario">Novos dados do usuário a ser atualizado</param>
+            <returns></returns>
+            <remarks>
+            Exemplo de Body:
+            
+                {
+                    "email": "exemploatualizado@email.com",
+                    "senha": "senhaexemploatualizada",
+                    "tipo": "1"
+                }
+            
+            Obs:. usuários do tipo 1 são comuns e usuários do tipo 2 são administradores
+            </remarks>
+            <response code="200">Código retornado caso o usuário tenha sido atualizado com sucesso</response>
+            <response code="404">Código retornado caso o usuário tenha sido deletado com sucesso</response>
+        </member>
+    </members>
+</doc>
